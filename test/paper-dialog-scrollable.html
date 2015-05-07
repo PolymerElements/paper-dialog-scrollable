@@ -91,11 +91,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         test('shows top divider if scrolled', function(done) {
           var container = fixture('basic');
           var scrollable = Polymer.dom(container).querySelector('paper-dialog-scrollable');
-          scrollable.scrollTarget.scrollTop = 10;
           setTimeout(function() {
-            assert.equal(getComputedStyle(scrollable, '::before').display, 'block', '::before is display::block');
-            done();
-          }, 100);
+            scrollable.scrollTarget.scrollTop = 10;
+            setTimeout(function() {
+              assert.equal(getComputedStyle(scrollable, '::before').display, 'block', '::before is display::block');
+              done();
+            }, 100);
+            // wait 200ms here because the timeout in paper-dialog-scrollable.attached is 100ms
+          }, 200);
         });
 
         test('shows bottom divider if scrollable', function(done) {
@@ -104,18 +107,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             var scrollable = Polymer.dom(container).querySelector('paper-dialog-scrollable');
             assert.equal(getComputedStyle(scrollable, '::after').display, 'block', '::after is display::block');
             done();
-            // wait 200ms here because the timeout in paper-dialog-scrollable.attached is 100ms...
+            // wait 200ms here because the timeout in paper-dialog-scrollable.attached is 100ms
           }, 200);
         });
 
         test('hides bottom divider if scrolled to bottom', function(done) {
           var container = fixture('basic');
           var scrollable = Polymer.dom(container).querySelector('paper-dialog-scrollable');
-          scrollable.scrollTarget.scrollTop = scrollable.scrollTarget.scrollHeight;
           setTimeout(function() {
-            assert.notEqual(getComputedStyle(scrollable, '::after').display, 'block', '::after is not display::block');
-            done();
-          }, 100);
+            scrollable.scrollTarget.scrollTop = scrollable.scrollTarget.scrollHeight;
+            setTimeout(function() {
+              assert.notEqual(getComputedStyle(scrollable, '::after').display, 'block', '::after is not display::block');
+              done();
+            }, 100);
+            // wait 200ms here because the timeout in paper-dialog-scrollable.attached is 100ms
+          }, 200);
         });
 
         test('does not shows dividers if scrolled and only child', function(done) {
