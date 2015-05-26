@@ -7,10 +7,9 @@
   ],
   "keywords": [
     "web-components",
-    "web-component",
     "polymer",
-    "paper",
-    "dialog"
+    "dialog",
+    "overlay"
   ],
   "main": [
     "paper-dialog-scrollable.html"
