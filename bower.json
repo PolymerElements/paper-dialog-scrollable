@@ -11,9 +11,7 @@
     "dialog",
     "overlay"
   ],
-  "main": [
-    "paper-dialog-scrollable.html"
-  ],
+  "main": "paper-dialog-scrollable.html",
   "private": true,
   "repository": {
     "type": "git",
