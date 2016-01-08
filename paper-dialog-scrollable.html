@@ -91,8 +91,6 @@ is hidden if it is scrolled to the bottom.
 
 <script>
 
-(function() {
-
   Polymer({
 
     is: 'paper-dialog-scrollable',
@@ -113,8 +111,7 @@ is hidden if it is scrolled to the bottom.
     },
 
     listeners: {
-      'scrollable.scroll': '_onScroll',
-      'iron-resize': '_onIronResize'
+      'scrollable.scroll': '_scroll'
     },
 
     /**
@@ -143,14 +140,8 @@ is hidden if it is scrolled to the bottom.
       this.toggleClass('can-scroll', this.scrollTarget.offsetHeight < this.scrollTarget.scrollHeight);
       this.toggleClass('scrolled-to-bottom',
         this.scrollTarget.scrollTop + this.scrollTarget.offsetHeight >= this.scrollTarget.scrollHeight);
-    },
-
-    _onScroll: function() {
-      this._scroll();
     }
 
-  })
-
-})();
+  });
 
 </script>
