@@ -102,10 +102,7 @@ is hidden if it is scrolled to the bottom.
        * @type {?Node}
        */
       dialogElement: {
-        type: Object,
-        value: function() {
-          return this.parentNode;
-        }
+        type: Object
       }
 
     },
@@ -123,6 +120,9 @@ is hidden if it is scrolled to the bottom.
 
     attached: function() {
       this.classList.add('no-padding');
+      // read parentNode on attached because if dynamically created,
+      // parentNode will be null on creation.
+      this.dialogElement = this.dialogElement || Polymer.dom(this).parentNode;
       // Set itself to the overlay sizing target
       this.dialogElement.sizingTarget = this.scrollTarget;
       // If the host is sized, fit the scrollable area to the container. Otherwise let it be

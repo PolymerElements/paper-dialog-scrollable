@@ -163,6 +163,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }, 10);
         });
 
+        test('can be added dynamically', function(done) {
+          var scrollable = document.createElement('paper-dialog-scrollable');
+          document.body.appendChild(scrollable);
+          setTimeout(function() {
+            assert.isTrue(scrollable.dialogElement === document.body, 'dialogElement is body');
+            document.body.removeChild(scrollable);
+            done();
+          }, 10);
+        });
+
       });
 
     </script>
