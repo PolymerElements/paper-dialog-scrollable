@@ -45,8 +45,12 @@ is hidden if it is scrolled to the bottom.
   <style>
 
     :host {
-      display: block;
-      position: relative;
+      /* Needed for correct flex rendering on Firefox & Chrome Canary */
+      min-height: 0;
+      max-height: 100%;
+
+      @apply(--layout);
+      @apply(--layout-relative);
     }
 
     :host(.is-scrolled:not(:first-child))::before {
@@ -72,12 +76,9 @@ is hidden if it is scrolled to the bottom.
     .scrollable {
       padding: 0 24px;
 
+      @apply(--layout-flex);
       @apply(--layout-scroll);
       @apply(--paper-dialog-scrollable);
-    }
-
-    .fit {
-      @apply(--layout-fit);
     }
   </style>
 
@@ -118,21 +119,14 @@ is hidden if it is scrolled to the bottom.
       return this.$.scrollable;
     },
 
+    ready: function () {
+      this._ensureTarget();
+    },
+
     attached: function() {
       this.classList.add('no-padding');
-      // read parentNode on attached because if dynamically created,
-      // parentNode will be null on creation.
-      this.dialogElement = this.dialogElement || Polymer.dom(this).parentNode;
-      // Set itself to the overlay sizing target
-      this.dialogElement.sizingTarget = this.scrollTarget;
-      // If the host is sized, fit the scrollable area to the container. Otherwise let it be
-      // its natural size.
-      requestAnimationFrame(function() {
-        if (this.offsetHeight > 0) {
-          this.$.scrollable.classList.add('fit');
-        }
-        this._scroll();
-      }.bind(this));
+      this._ensureTarget();
+      requestAnimationFrame(this._scroll.bind(this));
     },
 
     _scroll: function() {
@@ -140,6 +134,16 @@ is hidden if it is scrolled to the bottom.
       this.toggleClass('can-scroll', this.scrollTarget.offsetHeight < this.scrollTarget.scrollHeight);
       this.toggleClass('scrolled-to-bottom',
         this.scrollTarget.scrollTop + this.scrollTarget.offsetHeight >= this.scrollTarget.scrollHeight);
+    },
+
+    _ensureTarget: function () {
+      // read parentNode on attached because if dynamically created,
+      // parentNode will be null on creation.
+      this.dialogElement = this.dialogElement || Polymer.dom(this).parentNode;
+      // Set itself to the overlay sizing target
+      if (this.dialogElement) {
+        this.dialogElement.sizingTarget = this.scrollTarget;
+      }
     }
 
   });
