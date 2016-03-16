@@ -172,6 +172,7 @@ Custom property | Description | Default
       if (this.dialogElement && this.dialogElement.behaviors &&
           this.dialogElement.behaviors.indexOf(Polymer.PaperDialogBehaviorImpl) >= 0) {
         this.dialogElement.sizingTarget = this.scrollTarget;
+        this.scrollTarget.classList.remove('fit');
       } else if (this.dialogElement) {
         this.scrollTarget.classList.add('fit');
       }
