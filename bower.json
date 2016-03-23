@@ -12,7 +12,6 @@
     "overlay"
   ],
   "main": "paper-dialog-scrollable.html",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/PolymerElements/paper-dialog-scrollable"
