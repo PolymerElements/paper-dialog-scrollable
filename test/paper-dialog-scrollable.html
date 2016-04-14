@@ -33,6 +33,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .fixed-height paper-dialog-scrollable {
         @apply(--layout-flex);
       }
+
+      .giant {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 4000px;
+        width: 4000px;
+      }
     </style>
 
   </head>
@@ -92,6 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <h2>Dialog</h2>
           <paper-dialog-scrollable>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="giant"></div>
           </paper-dialog-scrollable>
           <div class="buttons">
             <button dialog-dismiss>close</button>
@@ -210,11 +219,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             var dRect = dialog.getBoundingClientRect();
             var sRect = scrollable.getBoundingClientRect();
             var stRect = scrollable.scrollTarget.getBoundingClientRect();
+//            var giantRect = Polymer.dom(dialog).querySelector('#giant').getBoundingClientRect();
             assert.equal(sRect.width, dRect.width, 'scrollable width ok');
             assert.isAbove(sRect.height, 0, 'scrollable height bigger than 0');
             assert.isBelow(sRect.height, dRect.height, 'scrollable height contained in dialog height');
             assert.equal(stRect.width, sRect.width, 'scrollTarget width ok');
             assert.equal(stRect.height, sRect.height, 'scrollTarget height ok');
+            assert.isBelow(dRect.height, window.innerHeight, 'dialog height ok');
+            assert.isBelow(dRect.width, window.innerWidth, 'dialog height ok');
             done();
           });
         });
