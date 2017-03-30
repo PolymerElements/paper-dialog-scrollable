@@ -111,7 +111,7 @@ Custom property | Description | Default
       }
     </style>
 
-    <div id="scrollable" class="scrollable">
+    <div id="scrollable" class="scrollable" on-scroll="_scroll">
       <slot></slot>
     </div>
   </template>
@@ -146,13 +146,11 @@ Custom property | Description | Default
     ready: function () {
       this._ensureTarget();
       this.classList.add('no-padding');
-      this._boundScroll = this._scroll.bind(this);
-      this.$.scrollable.addEventListener('scroll', this._boundScroll);
     },
 
     attached: function() {
       this._ensureTarget();
-      window.requestAnimationFrame(this._boundScroll);
+      requestAnimationFrame(this._scroll.bind(this));
     },
 
     _scroll: function() {
