@@ -149,7 +149,9 @@ Custom property | Description | Default
     },
 
     attached: function() {
-      this._ensureTarget();
+      setTimeout(function() {
+        this._ensureTarget();
+      }.bind(this), 1);
       requestAnimationFrame(this._scroll.bind(this));
     },
 
