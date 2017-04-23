@@ -148,6 +148,13 @@ Custom property | Description | Default
       this.classList.add('no-padding');
     },
 
+    /**
+     * is some cases ensure the target was targeting the shadow-root, so the behavior wasn't there
+     */
+    connectedCallback : function() {
+      this._ensureTarget();
+    },
+
     attached: function() {
       this._ensureTarget();
       requestAnimationFrame(this._scroll.bind(this));
