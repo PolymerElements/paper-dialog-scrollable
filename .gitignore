@@ -1,3 +1,5 @@
 bower_components*
 bower-*.json
-.bowerrc
+node_modules/
+.idea/
+npm-debug.log

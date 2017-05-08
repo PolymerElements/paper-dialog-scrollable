@@ -1,0 +1,42 @@
+{
+  "name": "paper-dialog-scrollable",
+  "version": "2.0.0",
+  "description": "A scrollable area used inside the material design dialog",
+  "main": "all-imports.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "dialog",
+    "overlay"
+  ],
+  "team": "The Guide",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.ing.net:2222/TheGuideComponents/paper-dialog-scrollable.git"
+  },
+  "homepage": "https://gitlab.ing.net/TheGuideComponents/paper-dialog-scrollable",
+  "bugs": {
+    "url": "https://gitlab.ing.net/TheGuideComponents/paper-dialog-scrollableissues"
+  },
+  "author": "The Polymer Authors",
+  "engines": {
+    "node": ">=6.0"
+  },
+  "scripts": {
+    "start": "polymer serve -o",
+    "test": "wct --skip-selenium-install",
+    "lint": "ing-kit-quality-checker",
+    "postinstall": "polymer install --variants"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "bower-art-resolver": "^2.0.6",
+    "bower-ing-resolver": "^1.0.0",
+    "ing-kit-quality-checker": "^1.0.5",
+    "polylint": "^2.10.1",
+    "web-component-tester": "^4.0.0",
+    "web-component-tester-istanbul": "^0.10.0"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}

@@ -1,76 +1,34 @@
 
-<!---
-
-This README is automatically generated from the comments in these files:
-paper-dialog-scrollable.html
-
-Edit those files, and our readme bot will duplicate them over here!
-Edit this file, and the bot will squash your changes :)
-
-The bot does some handling of markdown. Please file a bug if it does the wrong
-thing! https://github.com/PolymerLabs/tedium/issues
-
+<!--
+    THIS FILE IS GENERATED AUTOMATICALLY USING THE ing-kit-readme-generator.
+    PLEASE MAKE YOUR DOCUMENTATION CHANGES IN THE MAIN COMPONENT FILE AND RE-GENERATE THIS FILE
+    INSTEAD OF MAKING YOUR CHANGES HERE.
 -->
 
-[![Build status](https://travis-ci.org/PolymerElements/paper-dialog-scrollable.svg?branch=master)](https://travis-ci.org/PolymerElements/paper-dialog-scrollable)
+# paper-dialog-scrollable
 
-_[Demo and API docs](https://elements.polymer-project.org/elements/paper-dialog-scrollable)_
+**Version**: 2.0.0
+
+**Team**: The Guide
+
+**Owner(s)**:
+- The Polymer Authors
 
 
-##&lt;paper-dialog-scrollable&gt;
 
-Material design: [Dialogs](https://www.google.com/design/spec/components/dialogs.html)
+## Component documentation
 
-`paper-dialog-scrollable` implements a scrolling area used in a Material Design dialog. It shows
-a divider at the top and/or bottom indicating more content, depending on scroll position. Use this
-together with elements implementing `Polymer.PaperDialogBehavior`.
 
-```html
-<paper-dialog-impl>
-  <h2>Header</h2>
-  <paper-dialog-scrollable>
-    Lorem ipsum...
-  </paper-dialog-scrollable>
-  <div class="buttons">
-    <paper-button>OK</paper-button>
-  </div>
-</paper-dialog-impl>
-```
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 
-It shows a top divider after scrolling if it is not the first child in its parent container,
-indicating there is more content above. It shows a bottom divider if it is scrollable and it is not
-the last child in its parent container, indicating there is more content below. The bottom divider
-is hidden if it is scrolled to the bottom.
 
-If `paper-dialog-scrollable` is not a direct child of the element implementing `Polymer.PaperDialogBehavior`,
-remember to set the `dialogElement`:
 
-```html
-<paper-dialog-impl id="myDialog">
-  <h2>Header</h2>
-  <div class="my-content-wrapper">
-    <h4>Sub-header</h4>
-    <paper-dialog-scrollable>
-      Lorem ipsum...
-    </paper-dialog-scrollable>
-  </div>
-  <div class="buttons">
-    <paper-button>OK</paper-button>
-  </div>
-</paper-dialog-impl>
-
-<script>
-  var scrollable = Polymer.dom(myDialog).querySelector('paper-dialog-scrollable');
-  scrollable.dialogElement = myDialog;
-</script>
-```
-
-### Styling
-
-The following custom properties and mixins are available for styling:
-
-| Custom property | Description | Default |
-| --- | --- | --- |
-| `--paper-dialog-scrollable` | Mixin for the scrollable content | {} |
-
+## Installation and usage
+Please refer to [The Guide](http://webcomponents.ing.net) for additional installation and usage
+instructions.
 
