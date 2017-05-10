@@ -153,7 +153,9 @@ Custom property | Description | Default
 
     attached: function() {
       this.classList.add('no-padding');
-      this._ensureTarget();
+      setTimeout(function() {
+ +        this._ensureTarget();
+ +    }.bind(this), 1);
       requestAnimationFrame(this._scroll.bind(this));
     },
 
