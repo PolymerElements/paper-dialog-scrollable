@@ -76,7 +76,7 @@ Custom property | Description | Default
 
       :host {
         display: block;
-        @apply(--layout-relative);
+        @apply --layout-relative;
       }
 
       :host(.is-scrolled:not(:first-child))::before {
@@ -102,17 +102,17 @@ Custom property | Description | Default
       .scrollable {
         padding: 0 24px;
 
-        @apply(--layout-scroll);
-        @apply(--paper-dialog-scrollable);
+        @apply --layout-scroll;
+        @apply --paper-dialog-scrollable;
       }
 
       .fit {
-        @apply(--layout-fit);
+        @apply --layout-fit;
       }
     </style>
 
-    <div id="scrollable" class="scrollable">
-      <content></content>
+    <div id="scrollable" class="scrollable" on-scroll="_scroll">
+      <slot></slot>
     </div>
   </template>
 
@@ -136,10 +136,6 @@ Custom property | Description | Default
 
     },
 
-    listeners: {
-      'scrollable.scroll': '_scroll'
-    },
-
     /**
      * Returns the scrolling element.
      */
@@ -149,10 +145,10 @@ Custom property | Description | Default
 
     ready: function () {
       this._ensureTarget();
+      this.classList.add('no-padding');
     },
 
     attached: function() {
-      this.classList.add('no-padding');
       this._ensureTarget();
       requestAnimationFrame(this._scroll.bind(this));
     },
