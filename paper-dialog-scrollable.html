@@ -111,7 +111,7 @@ Custom property | Description | Default
       }
     </style>
 
-    <div id="scrollable" class="scrollable" on-scroll="_scroll">
+    <div id="scrollable" class="scrollable" on-scroll="updateScrollState">
       <slot></slot>
     </div>
   </template>
@@ -150,10 +150,16 @@ Custom property | Description | Default
 
     attached: function() {
       this._ensureTarget();
-      requestAnimationFrame(this._scroll.bind(this));
+      var boundUpdate = this.updateScrollState.bind(this);
+      requestAnimationFrame(boundUpdate);
+      this._nodeObserver = Polymer.dom(this).observeNodes(boundUpdate);
     },
 
-    _scroll: function() {
+    detached: function () {
+      Polymer.dom(this).unobserveNodes(this._nodeObserver);
+    },
+
+    updateScrollState: function() {
       this.toggleClass('is-scrolled', this.scrollTarget.scrollTop > 0);
       this.toggleClass('can-scroll', this.scrollTarget.offsetHeight < this.scrollTarget.scrollHeight);
       this.toggleClass('scrolled-to-bottom',
