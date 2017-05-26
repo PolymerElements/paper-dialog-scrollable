@@ -152,7 +152,11 @@ Custom property | Description | Default
       this._ensureTarget();
       var boundUpdate = this.updateScrollState.bind(this);
       requestAnimationFrame(boundUpdate);
-      Polymer.dom(this).observeNodes(boundUpdate);
+      this._nodeObserver = Polymer.dom(this).observeNodes(boundUpdate);
+    },
+
+    detached: function () {
+      Polymer.dom(this).unobserveNodes(this._nodeObserver);
     },
 
     updateScrollState: function() {
