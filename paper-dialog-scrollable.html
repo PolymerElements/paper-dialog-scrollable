@@ -150,7 +150,9 @@ Custom property | Description | Default
 
     attached: function() {
       this._ensureTarget();
-      requestAnimationFrame(this.updateScrollState.bind(this));
+      var boundUpdate = this.updateScrollState.bind(this);
+      requestAnimationFrame(boundUpdate);
+      Polymer.dom(this).observeNodes(boundUpdate);
     },
 
     updateScrollState: function() {
