@@ -161,10 +161,9 @@ Custom property | Description | Default
     },
 
     _ensureTarget: function () {
-      // read parentNode on attached because if dynamically created,
-      // parentNode will be null on creation.
-      this.dialogElement = this.dialogElement || Polymer.dom(this).parentNode;
-      // Check if parent implements paper-dialog-behavior. If not, fit scrollTarget to host.
+      // Read parentElement instead of parentNode in order to skip shadowRoots.
+      this.dialogElement = this.dialogElement || this.parentElement;
+      // Check if dialog implements paper-dialog-behavior. If not, fit scrollTarget to host.
       if (this.dialogElement && this.dialogElement.behaviors &&
           this.dialogElement.behaviors.indexOf(Polymer.PaperDialogBehaviorImpl) >= 0) {
         this.dialogElement.sizingTarget = this.scrollTarget;
