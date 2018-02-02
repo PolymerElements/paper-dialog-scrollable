@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/paper-dialog-scrollable",
+  "private": true,
+  "description": "A scrollable area used inside the material design dialog",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-dialog-scrollable"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
