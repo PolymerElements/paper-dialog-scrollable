@@ -72,12 +72,13 @@ interface PaperDialogScrollableElement extends Polymer.Element {
 
   /**
    * Returns the scrolling element.
+   *      
    */
-  scrollTarget: object|null;
-  ready(): any;
-  attached(): any;
-  updateScrollState(): any;
-  _ensureTarget(): any;
+  readonly scrollTarget: any;
+  ready(): void;
+  attached(): void;
+  updateScrollState(): void;
+  _ensureTarget(): void;
 }
 
 interface HTMLElementTagNameMap {
