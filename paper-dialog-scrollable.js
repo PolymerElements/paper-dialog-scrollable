@@ -7,6 +7,14 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
+import '@polymer/polymer/polymer-legacy.js';
+
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import { PaperDialogBehaviorImpl } from '@polymer/paper-dialog-behavior/paper-dialog-behavior.js';
+import '@polymer/paper-styles/default-theme.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+
 /**
 Material design: [Dialogs](https://www.google.com/design/spec/components/dialogs.html)
 
@@ -62,18 +70,6 @@ Custom property | Description | Default
 @demo demo/index.html
 @hero hero.svg
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { PaperDialogBehaviorImpl } from '@polymer/paper-dialog-behavior/paper-dialog-behavior.js';
-import '@polymer/paper-styles/default-theme.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 Polymer({
   _template: html`
     <style>
