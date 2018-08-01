@@ -1,18 +1,29 @@
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+This code may only be used under the BSD style license found at
+http://polymer.github.io/LICENSE.txt The complete set of authors may be found at
+http://polymer.github.io/AUTHORS.txt The complete set of contributors may be
+found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
+part of the polymer project is also subject to an additional IP rights grant
+found at http://polymer.github.io/PATENTS.txt
 */
-/**
-Material design: [Dialogs](https://www.google.com/design/spec/components/dialogs.html)
+import '@polymer/polymer/polymer-legacy.js';
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import '@polymer/paper-styles/default-theme.js';
 
-`paper-dialog-scrollable` implements a scrolling area used in a Material Design dialog. It shows
-a divider at the top and/or bottom indicating more content, depending on scroll position. Use this
-together with elements implementing `Polymer.PaperDialogBehavior`.
+import {PaperDialogBehaviorImpl} from '@polymer/paper-dialog-behavior/paper-dialog-behavior.js';
+import {Polymer} from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+
+/**
+Material design:
+[Dialogs](https://www.google.com/design/spec/components/dialogs.html)
+
+`paper-dialog-scrollable` implements a scrolling area used in a Material Design
+dialog. It shows a divider at the top and/or bottom indicating more content,
+depending on scroll position. Use this together with elements implementing
+`Polymer.PaperDialogBehavior`.
 
     <paper-dialog-impl>
       <h2>Header</h2>
@@ -24,13 +35,14 @@ together with elements implementing `Polymer.PaperDialogBehavior`.
       </div>
     </paper-dialog-impl>
 
-It shows a top divider after scrolling if it is not the first child in its parent container,
-indicating there is more content above. It shows a bottom divider if it is scrollable and it is not
-the last child in its parent container, indicating there is more content below. The bottom divider
-is hidden if it is scrolled to the bottom.
+It shows a top divider after scrolling if it is not the first child in its
+parent container, indicating there is more content above. It shows a bottom
+divider if it is scrollable and it is not the last child in its parent
+container, indicating there is more content below. The bottom divider is hidden
+if it is scrolled to the bottom.
 
-If `paper-dialog-scrollable` is not a direct child of the element implementing `Polymer.PaperDialogBehavior`,
-remember to set the `dialogElement`:
+If `paper-dialog-scrollable` is not a direct child of the element implementing
+`Polymer.PaperDialogBehavior`, remember to set the `dialogElement`:
 
     <paper-dialog-impl id="myDialog">
       <h2>Header</h2>
@@ -46,7 +58,8 @@ remember to set the `dialogElement`:
     </paper-dialog-impl>
 
     <script>
-      var scrollable = Polymer.dom(myDialog).querySelector('paper-dialog-scrollable');
+      var scrollable =
+Polymer.dom(myDialog).querySelector('paper-dialog-scrollable');
       scrollable.dialogElement = myDialog;
     </script>
 
@@ -62,18 +75,6 @@ Custom property | Description | Default
 @demo demo/index.html
 @hero hero.svg
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { PaperDialogBehaviorImpl } from '@polymer/paper-dialog-behavior/paper-dialog-behavior.js';
-import '@polymer/paper-styles/default-theme.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 Polymer({
   _template: html`
     <style>
@@ -167,8 +168,7 @@ Polymer({
     // Check if dialog implements paper-dialog-behavior. If not, fit
     // scrollTarget to host.
     if (this.dialogElement && this.dialogElement.behaviors &&
-        this.dialogElement.behaviors.indexOf(PaperDialogBehaviorImpl) >=
-            0) {
+        this.dialogElement.behaviors.indexOf(PaperDialogBehaviorImpl) >= 0) {
       this.dialogElement.sizingTarget = this.scrollTarget;
       this.scrollTarget.classList.remove('fit');
     } else if (this.dialogElement) {
