@@ -70,12 +70,11 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--paper-dialog-scrollable` | Mixin for the scrollable content | {}
 
-@group Paper Elements
 @element paper-dialog-scrollable
 @demo demo/index.html
-@hero hero.svg
 */
 Polymer({
+  /** @override */
   _template: html`
     <style>
 
@@ -141,11 +140,13 @@ Polymer({
     return this.$.scrollable;
   },
 
+  /** @override */
   ready: function() {
     this._ensureTarget();
     this.classList.add('no-padding');
   },
 
+  /** @override */
   attached: function() {
     this._ensureTarget();
     requestAnimationFrame(this.updateScrollState.bind(this));
